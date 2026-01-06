@@ -11,9 +11,9 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		8C0960752F0D6F2F009CC4CC /* Country Flag GAme */ = {
+		8C0960752F0D6F2F009CC4CC /* Country Flag Game */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Country Flag GAme";
+			path = "Country Flag Game";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -32,7 +32,7 @@
 		8C09606A2F0D6F2F009CC4CC = {
 			isa = PBXGroup;
 			children = (
-				8C0960752F0D6F2F009CC4CC /* Country Flag GAme */,
+				8C0960752F0D6F2F009CC4CC /* Country Flag Game */,
 				8C0960742F0D6F2F009CC4CC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,7 +61,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				8C0960752F0D6F2F009CC4CC /* Country Flag GAme */,
+				8C0960752F0D6F2F009CC4CC /* Country Flag Game */,
 			);
 			name = "Country Flag GAme";
 			packageProductDependencies = (
@@ -85,7 +85,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8C09606E2F0D6F2F009CC4CC /* Build configuration list for PBXProject "Country Flag GAme" */;
+			buildConfigurationList = 8C09606E2F0D6F2F009CC4CC /* Build configuration list for PBXProject "Country Flag Game" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -313,7 +313,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8C09606E2F0D6F2F009CC4CC /* Build configuration list for PBXProject "Country Flag GAme" */ = {
+		8C09606E2F0D6F2F009CC4CC /* Build configuration list for PBXProject "Country Flag Game" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8C09607C2F0D6F31009CC4CC /* Debug */,
