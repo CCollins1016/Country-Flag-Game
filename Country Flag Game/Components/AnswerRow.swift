@@ -18,7 +18,6 @@ struct AnswerRow: View {
                 .font(.title)
             if isSelected {
                 Spacer()
-                Rectangle()
                 Image(systemName: answer.isCorrect ? "checkmark.circle.fill" : "x.circle.fill")
                     .foregroundColor(answer.isCorrect ? .green : .red)
             }
