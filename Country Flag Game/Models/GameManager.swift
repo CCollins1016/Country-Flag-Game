@@ -32,44 +32,59 @@ class GameManager {
     }
     func loadQuestions() {
         let countries = Data().countries
-        if countries.count > 4 {
+        if countries.count < 4 {
             print("There are only \(countries.count) countries listed in Data (must be at least 4)")
-        }
-        else {
             questions.removeAll()
-            for country in countries {
-                if UIImage(named: country) != nil {
-                    var incorrectAnswer = [String] ()
-                    while incorrectAnswer.count < 3 {
-                        if let randomCountry = countries.randomElement(),
-                           randomCountry != country,
-                           !incorrectAnswer.contains(randomCountry) {
-                            incorrectAnswer.append(randomCountry)
-                        }
+            return
+        }
+
+        questions.removeAll()
+        for country in countries {
+            if UIImage(named: country) != nil {
+                let pool = countries.filter { $0 != country }
+                if pool.count < 3 {
+                    print("Not enough distractors for \(country)")
+                    continue
+                }
+
+                var incorrectAnswer = [String]()
+                while incorrectAnswer.count < 3 {
+                    if let randomCountry = pool.randomElement(),
+                       !incorrectAnswer.contains(randomCountry) {
+                        incorrectAnswer.append(randomCountry)
                     }
-                    questions.append(Question(correctAnswer: Answer(text: country, isCorrect: true),
-                                              incorrectAnswers: [
-                                                Answer(text: incorrectAnswer[0], isCorrect: false),
-                                                Answer(text: incorrectAnswer[1], isCorrect: false),
-                                                Answer(text: incorrectAnswer[2], isCorrect: false)
-                                              ]))
                 }
-                else {
-                    print("\(country) image cannot be found")
-                }
+
+                questions.append(
+                    Question(
+                        correctAnswer: Answer(text: country, isCorrect: true),
+                        incorrectAnswers: [
+                            Answer(text: incorrectAnswer[0], isCorrect: false),
+                            Answer(text: incorrectAnswer[1], isCorrect: false),
+                            Answer(text: incorrectAnswer[2], isCorrect: false)
+                        ]
+                    )
+                )
+            } else {
+                print("\(country) image cannot be found")
             }
         }
     }
     func goToNextQuestion() {
+        if questions.isEmpty {
+            playingGame = false
+            progress = 0
+            return
+        }
         if index < questions.count {
             answerSelected = false
-            progress = CGFloat(index) / CGFloat(questions.count) * 350.0
+            // Safe progress calculation now that questions is non-empty
+            progress = (CGFloat(index) / CGFloat(questions.count)) * 350.0
             let nextQuestion = questions[index]
             country = nextQuestion.correctAnswer.text
             answerChoices = ([nextQuestion.correctAnswer] + nextQuestion.incorrectAnswers).shuffled()
             index += 1
-        }
-        else {
+        } else {
             playingGame = false
         }
     }
